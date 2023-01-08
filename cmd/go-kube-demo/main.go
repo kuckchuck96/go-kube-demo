@@ -29,9 +29,10 @@ func main() {
 
 	// Handlers
 	userHandler := handler.NewUserHandler(userService)
+	healthHandler := handler.NewHealthHandler()
 
 	// Routes
-	routes := route.NewRoutes(router, userHandler)
+	routes := route.NewRoutes(router, userHandler, healthHandler)
 	routes.AddRoutes()
 
 	// Custom http server
