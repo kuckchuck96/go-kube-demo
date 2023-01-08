@@ -1,0 +1,6 @@
+# Project
+Makefile
+cmd/build
+
+# Git
+.git
