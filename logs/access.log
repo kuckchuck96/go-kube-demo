@@ -1,0 +1,4 @@
+2023/01/19 20:36:44 {0xc000514000 0001-01-01 00:00:00 +0000 UTC 0 0s ::1 GET   false 0 map[]}
+2023/01/19 20:36:54 Shutting down server...
+2023/01/19 20:36:54 listen: http: Server closed
+2023/01/19 20:36:54 Server exiting

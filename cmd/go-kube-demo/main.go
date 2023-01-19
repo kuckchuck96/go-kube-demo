@@ -5,6 +5,7 @@ import (
 	"errors"
 	"go-kube-demo/internal/handler"
 	"go-kube-demo/internal/pkg/httpclient"
+	"go-kube-demo/internal/pkg/logger"
 	"go-kube-demo/internal/route"
 	"go-kube-demo/internal/service"
 	"log"
@@ -20,6 +21,21 @@ import (
 func main() {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
+
+	// Logger
+	logger, err := logger.NewLogger("access.log")
+	if err != nil {
+		os.Exit(1)
+	}
+
+	router.Use(func(ctx *gin.Context) {
+		ctx.Next()
+		logger.Print(gin.LogFormatterParams{
+			Request:  ctx.Request,
+			ClientIP: ctx.ClientIP(),
+			Method:   ctx.Request.Method,
+		})
+	})
 
 	// Http client
 	httpClient := httpclient.New()
